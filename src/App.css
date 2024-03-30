@@ -1,0 +1,23 @@
+/* Estilos para el componente registro */
+.registro{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 2%;
+    /* border: solid 1px black; */
+    row-gap: 4px;
+    text-align: center;
+    background-color: white;
+    border-radius: 2%;
+}
+
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+
+}

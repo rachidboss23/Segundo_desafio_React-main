@@ -5,6 +5,7 @@ const Formulario = ({ mensaje, setMensaje }) => { // Agregamos mensaje y setMens
   const [email, setEmail] = useState(''); 
   const [contrasena, setContrasena] = useState(''); 
   const [confirmarContrasena, setConfirmarContrasena] = useState(''); 
+  const [mensajePass, setMensajePass]= useState('')
   
 
   const handleNombreChange = (e) => {
@@ -33,6 +34,13 @@ const Formulario = ({ mensaje, setMensaje }) => { // Agregamos mensaje y setMens
       // Aquí se agregaría la lógica para enviar el formulario
     }
   }
+  const ChequearPass = ()=>{
+    if(contrasena === confirmarContrasena){
+      setMensajePass('La contrasena coinciden.')
+    }else{
+      setMensajePass('La Contrasena no coinciden')
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -41,9 +49,11 @@ const Formulario = ({ mensaje, setMensaje }) => { // Agregamos mensaje y setMens
       {/* Input para el email */}
       <input type="email" className="form-control mb-2" value={email} onChange={handleEmailChange} placeholder="Email" />
       {/* Input para la contraseña */}
-      <input type="password" className="form-control mb-2" value={contrasena} onChange={handleContrasenaChange} placeholder="Contraseña" />
+      <input type="password" className="form-control mb-2" value={contrasena} onChange={(e)=>handleContrasenaChange(e)} placeholder="Contraseña" />
       {/* Input para confirmar la contraseña */}
-      <input type="password" className="form-control mb-2" value={confirmarContrasena} onChange={handleConfirmarContrasenaChange} placeholder="Confirmar Contraseña" />
+      <input type="password" className="form-control mb-2" value={confirmarContrasena} onChange={(e)=>handleConfirmarContrasenaChange(e)} onBlur={ChequearPass} placeholder="Confirmar Contraseña" />
+      <br />
+      {mensajePass && <p>{mensajePass}</p>}
       {/* Botón para enviar el formulario */}
       <button type="submit" className='btn btn-success'>Registrarse</button>
     </form>
